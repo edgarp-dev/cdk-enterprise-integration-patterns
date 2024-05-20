@@ -13,7 +13,7 @@ export class AppStack extends cdk.Stack {
 		const queue = new sqs.Queue(this, "MessagesQueue");
 
 		const producerLambda = new lambda.Function(this, "ProducerLambda", {
-			runtime: lambda.Runtime.NODEJS_18_X,
+			runtime: lambda.Runtime.NODEJS_20_X,
 			handler: "handler.handler",
 			code: lambda.Code.fromAsset(
 				join(__dirname, "..", "..", "producer", "dist")
@@ -26,7 +26,7 @@ export class AppStack extends cdk.Stack {
 		queue.grantSendMessages(producerLambda);
 
 		const consumerLambda = new lambda.Function(this, "ConsumerLambda", {
-			runtime: lambda.Runtime.NODEJS_18_X,
+			runtime: lambda.Runtime.NODEJS_20_X,
 			handler: "handler.handler",
 			code: lambda.Code.fromAsset(
 				join(__dirname, "..", "..", "consumer", "dist")
