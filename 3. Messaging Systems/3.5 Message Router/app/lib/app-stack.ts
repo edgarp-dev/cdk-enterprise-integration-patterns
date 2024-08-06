@@ -17,7 +17,7 @@ export class AppStack extends cdk.Stack {
 		});
 
 		const lambdaFunction2 = new NodejsFunction(this, "LambdaFunction2", {
-			runtime: lambda.Runtime.NODEJS_16_X,
+			runtime: lambda.Runtime.NODEJS_20_X,
 			entry: join(__dirname, "lambda2", "index.ts"),
 			handler: "handler",
 		});
